@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Truth Dare</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            background: url(https://images.unsplash.com/photo-1574610758891-5b809b6e6e2e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80)
+        }
+
+        .navbar {
+            overflow: hidden;
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+        }
+
+        /* Style the navigation bar links */
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        /* Right-aligned link */
+        .navbar a.right {
+            float: right;
+        }
+
+        /* Change color on hover */
+        .navbar a:hover {
+            background-color: rgb(247, 248, 248);
+            color: black;
+        }
+
+        textarea {
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            font-size: 20px;
+            resize: none;
+        }
+
+        .blink {
+            animation: blinker 1.5s linear infinite;
+            color: red;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="container-fluid p-5 text-white text-center">
+        <h1 class="display-1">TRUTH or DARE</h1>
+    </header>
+    <nav class="navbar navbar-light">
+        <a class="navbar-brand" href="WelcomePage.html">Home</a>
+        <a class="navbar-brand" href="WelcomePage.html" class="right">Exit</a>
+    </nav>
+
+    <div>
+        <form action="add_question" method="post">
+            {% csrf_token %}
+            <label class=" blink display-4 text-white" style="margin: 0px 0px 0px 30px;">Add Your Own Question</label>
+
+            <div style="margin: 50px 0px 0px 30px;">
+                <label class="display-6 text-white">Select one option from Truth or Dare</label>
+                <select class="btn btn-warning dropdown-toggle" id="truth_dare" name="truth_dare"
+                    style="margin: 0px 0px 20px 20px;">
+                    <option selected value="truth">Truth</option>
+                    <option value="dare">Dare</option>
+                </select>
+            </div>
+
+            <div style="margin: 30px 0px 0px 30px;">
+                <label class="display-6 text-white"> Select one option from Level</label>
+                <select style="margin: 0px 0px 20px 20px;" class="btn btn-warning dropdown-toggle" id="level"
+                    name="level">
+                    <option selected value="soft">Soft</option>
+                    <option value="hard">Hard</option>
+                    <option value="extreme">Extreme</option>
+                </select>
+            </div>
+            <div style="margin: 30px 0px 0px 30px;">
+                <label class="display-6 text-white"> Enter Question</label><br>
+                <textarea placeholder="Enter your own question" name="question" id="question" rows="4"
+                    cols="90"></textarea>
+            </div>
+
+            <!-- <input placeholder="Enter your own question" class="display-6"type="text" name="question" id="question" /> -->
+
+            <input style="margin: 30px 0px 0px 30px;" class="btn btn-success " type="submit" value="Add the Question" />
+        </form>
+    </div>
+    <footer>
+        <marquee class=" container-fluid p-5 text-white" direction="left" scrollamount="30">
+            <h2>!! Thanks for your support !!</h2>
+        </marquee>
+    </footer>
+</body>
+
+</html>
